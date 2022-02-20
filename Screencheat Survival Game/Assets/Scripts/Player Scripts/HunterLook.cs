@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 
 public class HunterLook : MonoBehaviour
 {
-    PlayerControls controls;
-    Vector2 cameraMove;
+    /*
+    public PlayerControls controls;
+    public Vector2 cameraMove;
 
     private void Awake()
     {
@@ -16,9 +17,9 @@ public class HunterLook : MonoBehaviour
         controls.Gameplay.Look.canceled += ctx => cameraMove = Vector2.zero;
     }
 
-    void Update()
+    public void Update()
     {
         Vector2 m = new Vector2(cameraMove.x, cameraMove.y) * Time.deltaTime;
     }
-    
+    */
 }
