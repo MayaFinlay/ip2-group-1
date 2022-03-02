@@ -6,61 +6,72 @@ using UnityEngine.InputSystem;
 
 public class PlayerController: MonoBehaviour
 {
-    public float speed = 5f; //movement speed variable
-    Vector3 direction; //Vector3 to store movement direction.
+
+    PlayerControls moveControls;
+    Vector2 playerMove;
+    Vector2 playerDirection;
+    public CharacterController playerController;
+    public Camera cameraPlayer;
+    public Transform playerBody;
+
+    public float playerSpeed = 5f; //movement speed variable
     float horizontal; //float value for horizontal movement
-    float vertical; // float value for vertical movement
+    float vertical; //float value for vertical movement
+    Vector3 direction; //Vector3 to store movement direction.
     Rigidbody rb; //reference to rigidbody
     float dragvalue = 5f; //asigned value for drag 
     public float speedmultiplier = 5f; //multiplier for speed value 
-
-
-    PlayerControls controls;
-    Vector2 cameraMove;
+    
 
     private void Awake()
     {
-        controls = new PlayerControls();
+        moveControls = new PlayerControls();
 
-        controls.Gameplay.Look.performed += ctx => cameraMove += ctx.ReadValue<Vector2>();
-        controls.Gameplay.Look.canceled += ctx => cameraMove = Vector2.zero;
+        moveControls.Gameplay.Movement.performed += ctx => playerMove = ctx.ReadValue<Vector2>();
+        moveControls.Gameplay.Movement.canceled += ctx => playerMove = Vector2.zero;
+        moveControls.Gameplay.Jump.performed += ctx => Jump();
     }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>(); //get component in the start method
+        playerController = GetComponent<CharacterController>(); // Allows player to move through the level
         rb.freezeRotation = true; //freeze the rotation on the rigidbody
     }
 
-    private void Update()
+    public void Update()
     {
-        PlayerInput(); //method to handle input and call it in update
-        movementadjustor();
-        OnLook();
-    }
+        OnMove();
+        Movementadjustor();
 
-    void PlayerInput()
+    }
+    public void OnMove()
     {
-        horizontal = Input.GetAxisRaw("Horizontal"); //horizontal movement
-        vertical = Input.GetAxisRaw("Vertical"); //vertical movement
-        direction = transform.forward * vertical + transform.right * horizontal; // transform.forward and transform.right are used to move in the direction relative to where the player is looking
+        horizontal = playerMove.x;
+        vertical = playerMove.y;
+
+        direction = transform.forward * vertical + transform.right * horizontal;
+        rb.AddForce(direction.normalized * playerSpeed * speedmultiplier, ForceMode.Acceleration);
        
     }
-    void movementadjustor() //to reduce the "slippery" movement motion
+
+    void Movementadjustor() //to reduce the "slippery" movement motion
     {
         rb.drag = dragvalue; //assigning a drag value
     }
-    private void FixedUpdate() //fixed update allows the frequency of the physics system required by the rigidbody
+
+    public void Jump()
     {
-        playermv(); //method for player movement called in fixedUpdate
-    }
-    void playermv()
-    {
-        rb.AddForce(direction.normalized * speed * speedmultiplier, ForceMode.Acceleration);// adding a force to the rigidbody while normalizing the movement of the player
+        print("lol you jumped loser");
     }
 
-    public void OnLook()
+    void OnEnable()
     {
-        Vector2 m = new Vector2(cameraMove.x, cameraMove.y) * Time.deltaTime;
+        moveControls.Gameplay.Enable();
+    }
+
+    void OnDisable()
+    {
+        moveControls.Gameplay.Disable();
     }
 }
