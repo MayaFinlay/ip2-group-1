@@ -14,57 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
-    - .collabignore
-    - Assets/Archive.meta
-    - Assets/Materials.meta
-    - Assets/Materials/Dark green.mat
-    - Assets/Materials/Dark green.mat.meta
-    - Assets/Materials/Hunter.mat
-    - Assets/Materials/Hunter.mat.meta
-    - Assets/Materials/Survivor 1.mat
-    - Assets/Materials/Survivor 1.mat.meta
-    - Assets/Materials/Survivor 2.mat
-    - Assets/Materials/Survivor 2.mat.meta
-    - Assets/Materials/Survivor 3.mat
-    - Assets/Materials/Survivor 3.mat.meta
-    - Assets/Materials/UI.meta
-    - Assets/Materials/UI/Empty Health Bar.png.meta
-    - Assets/New Folder.meta
-    - Assets/Prefabs.meta
     - Assets/Prefabs/Player.prefab
     - Assets/Prefabs/Player.prefab.meta
-    - Assets/Resources.meta
-    - Assets/Resources/BillingMode.json.meta
-    - Assets/Scenes.meta
     - Assets/Scenes/MainScene.unity
     - Assets/Scenes/MainScene.unity.meta
-    - Assets/Scenes/SampleScene.unity
-    - Assets/Scenes/SampleScene.unity.meta
-    - Assets/Scripts.meta
-    - Assets/Scripts/CubeTest.cs.meta
-    - Assets/Scripts/Player Scripts.meta
-    - Assets/Scripts/Player Scripts/HealthBar.cs.meta
-    - Assets/Scripts/Player Scripts/HunterLook.cs.meta
-    - Assets/Scripts/Player Scripts/HunterMovement.cs.meta
     - Assets/Scripts/Player Scripts/PlayerController.cs
     - Assets/Scripts/Player Scripts/PlayerController.cs.meta
     - Assets/Scripts/Player Scripts/PlayerControls.cs
     - Assets/Scripts/Player Scripts/PlayerControls.cs.meta
     - Assets/Scripts/Player Scripts/PlayerControls.inputactions
     - Assets/Scripts/Player Scripts/PlayerControls.inputactions.meta
-    - Packages/manifest.json
-    - Packages/packages-lock.json
-    - ProjectSettings/EditorBuildSettings.asset
-    - ProjectSettings/InputManager.asset
-    - ProjectSettings/ProjectSettings.asset
-    - ProjectSettings/ProjectVersion.txt
-    - ProjectSettings/TagManager.asset
-    - ProjectSettings/TimeManager.asset
-    - ProjectSettings/UnityConnectSettings.asset
-    - ProjectSettings/VFXManager.asset
-    - ProjectSettings/VersionControlSettings.asset
     - 
-    m_Values: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    m_Values: 0101010101010101010101
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
