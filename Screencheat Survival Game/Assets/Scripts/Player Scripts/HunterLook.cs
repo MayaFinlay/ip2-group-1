@@ -30,8 +30,10 @@ public class HunterLook : MonoBehaviour
     {
         cameraPlayer = new Camera();
 
-        float rightStickX = cameraMove.y * cameraSensitivity * Time.deltaTime;
-        float rightStickY = cameraMove.x * cameraSensitivity * Time.deltaTime;
+        float rightStickX = cameraMove.x * cameraSensitivity * Time.deltaTime;
+        print(rightStickX);
+        float rightStickY = cameraMove.y * cameraSensitivity * Time.deltaTime;
+        print(rightStickY);
 
         // Keeps body from rotating trough Z axis
         xRotation -= rightStickY;
@@ -40,7 +42,7 @@ public class HunterLook : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -70f, 70f);
 
         // Processes rotation into angles
-        transform.localRotation = Quaternion.Euler(cameraMove.y, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(cameraMove.x, 0f, 0f);
 
         //Rotates body through X axis
         //body.Rotate(Vector3.up * rightStickX);
