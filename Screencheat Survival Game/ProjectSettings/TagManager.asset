@@ -5,11 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Key
+  - Ghost Wall
+  - Hunter
+  - Ghost
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Collect
   - Water
   - UI
   - Ground

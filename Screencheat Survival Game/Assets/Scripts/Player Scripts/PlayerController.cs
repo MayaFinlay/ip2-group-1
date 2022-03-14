@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class PlayerController: MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     PlayerControls moveControls;
@@ -58,8 +58,8 @@ public class PlayerController: MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>(); //get component in the start method
-        playerController = GetComponent<CharacterController>(); // Allows player to move through the level
+        rb = GetComponentInChildren<Rigidbody>(); //get component in the start method
+        playerController = GetComponentInChildren<CharacterController>(); // Allows player to move through the level
         rb.freezeRotation = true; //freeze the rotation on the rigidbody
     }
 
@@ -83,13 +83,13 @@ public class PlayerController: MonoBehaviour
         direction = transform.forward * vertical + transform.right * horizontal;
         rb.AddForce(direction.normalized * playerSpeed * speedmultiplier, ForceMode.Acceleration);
         Movementadjustor();
-  }
-        void Movementadjustor() //to reduce the "slippery" movement motion
-        {
-            rb.drag = dragvalue; //assigning a drag value
-        }
+    }
+    void Movementadjustor() //to reduce the "slippery" movement motion
+    {
+        rb.drag = dragvalue; //assigning a drag value
+    }
 
-  
+
 
     public void Jump()
     {
@@ -143,7 +143,7 @@ public class PlayerController: MonoBehaviour
     /// Method for dropping item.
     /// </summary>
     /// <param name="item">Item.</param>
-   
+
 
     private void DropItem(PickableItem item)
     {
@@ -157,7 +157,35 @@ public class PlayerController: MonoBehaviour
         item.Rb.AddForce(item.transform.forward * 2, ForceMode.VelocityChange);
     }
 
-    
+    private void OnCollisionEnter(Collision col)
+    {
+
+        float timerWall = 0f;
+        bool timerStart;
+
+;
+        if (col.gameObject.tag == "Ghost Wall")
+        {
+            col.gameObject.SetActive(false);
+            timerStart = true;
+        
+        
+            if (timerStart == true)
+            {
+                timerWall += Time.deltaTime;
+            }
+            
+           
+            if(timerWall == 2f)
+            {
+                timerStart = false;
+                timerWall = 0f;
+                col.gameObject.SetActive(true);
+            }
+        
+       }
+    }
+
 
     void OnEnable()
     {

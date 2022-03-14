@@ -11,6 +11,7 @@ public class HunterLook : MonoBehaviour
     float cameraSensitivity = 100f;
     public Camera cameraPlayer;
     float xRotation = 0f;
+    
 
     public void Awake()
     {
@@ -57,4 +58,6 @@ public class HunterLook : MonoBehaviour
     {
         lookControls.Gameplay.Disable();
     }
+
+    
 }
